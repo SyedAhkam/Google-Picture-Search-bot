@@ -25,4 +25,5 @@ while True:
     body.send_keys(Keys.DOWN)
     time.sleep(2)
     browser.save_screenshot("screenshot" + str(counter) + ".png")
+    print('Saved Screenshot' + str(counter) + '.png')
     counter = counter + 1
