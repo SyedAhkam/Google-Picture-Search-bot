@@ -1,8 +1,9 @@
-from selenium import webdriver                      #####################
-from selenium.webdriver.common.by import By         #                   #
-from selenium.webdriver.common.keys import Keys     #   Import Modules  #
-import time                                         #                   #
-from os import path, mkdir                          #####################
+# Import Modules
+
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+import time     
+from os import path, mkdir
 
 art = """
   _________                .___ _____  .__     __                    
@@ -15,30 +16,30 @@ art = """
 
 print(art)
 
-url = 'https://www.google.com' # URL
-query = input('What do you want to search for?\n') ## Change query to anything
-Screenshots = int(input('How many screenshots do you want?\n'))# No of screenshots
+url = 'https://www.google.com'  # URL
+query = input('What do you want to search for?\n')  ## Change query to anything
+Screenshots = int(input('How many screenshots do you want?\n'))  # No of screenshots
 
-browser = webdriver.Chrome() # New Instance of chrome
-browser.get(url) # Go to our URL
+browser = webdriver.Chrome()  # New Instance of chrome
+browser.get(url)  # Go to our URL
 
-text_field = browser.find_element_by_name('q') # Find The search box
-text_field.send_keys(query) # Send our query
-text_field.send_keys(Keys.RETURN) # Hit enter
+text_field = browser.find_element_by_name('q')  # Find The search box
+text_field.send_keys(query)  # Send our query
+text_field.send_keys(Keys.RETURN)  # Hit enter
 
-time.sleep(1) # Wait 1 sec
+time.sleep(1)  # Wait 1 sec
 
-images = browser.find_element_by_link_text('Images') # Find the images link
-images.click() # Click on Images
+images = browser.find_element_by_link_text('Images')  # Find the images link
+images.click()  # Click on Images
 
-time.sleep(2) # Wait for images to load
-        
-counter = 1 # Starting value for the counter
+time.sleep(2)  # Wait for images to load
 
-while True: # While loop to capture multiple screenshots
-    body = browser.find_element_by_css_selector('body') # Find body
+counter = 1  # Starting value for the counter
 
-    time.sleep(2) # Wait to load page
+while True:  # While loop to capture multiple screenshots
+    body = browser.find_element_by_css_selector('body')  # Find body
+
+    time.sleep(2)  # Wait to load page
     
     if not path.exists('screenshots'): # Check if there is a screenshot folder, If not make a new one
         print('screenshot folder not found,Making one...')
@@ -56,5 +57,3 @@ while True: # While loop to capture multiple screenshots
         print('Saved all screenshots, Closing browser...')
         browser.close() # If yes, close the browser
         break
-
-
