@@ -2,6 +2,7 @@
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
 import time     
 from os import path, mkdir
 
@@ -20,7 +21,10 @@ url = 'https://www.google.com'  # URL
 query = input('What do you want to search for?\n')  # Change query to anything
 Screenshots = int(input('How many screenshots do you want?\n'))  # No of screenshots
 
-browser = webdriver.Chrome()  # New Instance of chrome
+opts = Options()
+opts.add_argument("--headless")  # Headless
+
+browser = webdriver.Chrome(options = opts)  # New Instance of chrome
 browser.get(url)  # Go to our URL
 
 text_field = browser.find_element_by_name('q')  # Find The search box
